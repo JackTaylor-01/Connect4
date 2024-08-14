@@ -1,4 +1,3 @@
-
 #ifndef CONNECT_FOUR_H
 #define CONNECT_FOUR_H
 
@@ -18,7 +17,9 @@ private:
 
     void switchPlayer();
     void displayStatus();
+    bool checkForWin();
 };
 
 #endif
+
 

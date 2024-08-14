@@ -1,4 +1,3 @@
-
 #include "game.h"
 #include <iostream>
 
@@ -16,6 +15,14 @@ void ConnectFourGame::displayStatus() {
     std::cout << "Next player: " << currentPlayer->getName() << " (" << (currentPlayer->getToken() == Token::Red ? "Red" : "Yellow") << ")\n";
 }
 
+bool ConnectFourGame::checkForWin() {
+    if (board.checkWin(currentPlayer->getToken())) {
+        std::cout << "Player " << currentPlayer->getName() << " wins!\n";
+        return true;
+    }
+    return false;
+}
+
 void ConnectFourGame::playGame() {
     while (true) {
         displayStatus();
@@ -28,6 +35,13 @@ void ConnectFourGame::playGame() {
             continue;
         }
 
+        if (checkForWin()) {
+            board.displayBoard();
+            std::cout << "Game over.\n";
+            return;  // End game if there's a winner
+        }
+
         switchPlayer();  // Switch turns after a valid move
     }
 }
+
