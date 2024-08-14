@@ -2,8 +2,8 @@
 #include <iostream>
 #include <limits>
 
-ConnectFourGame::ConnectFourGame(int rows, int cols)
-    : board(rows, cols), player1("Player 1", Token::Red), player2("Player 2", Token::Yellow) {
+ConnectFourGame::ConnectFourGame(int rows, int cols, int winLength)
+    : board(rows, cols, winLength), player1("Player 1", Token::Red), player2("Player 2", Token::Yellow) {
     currentPlayer = &player1;
 }
 
@@ -49,5 +49,6 @@ void ConnectFourGame::playGame() {
         switchPlayer();  // Switch turns after a valid move
     }
 }
+
 
 

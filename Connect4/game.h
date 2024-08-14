@@ -6,7 +6,7 @@
 
 class ConnectFourGame {
 public:
-    ConnectFourGame(int rows, int cols);
+    ConnectFourGame(int rows, int cols, int winLength);
     void playGame();
 
 private:
@@ -21,5 +21,4 @@ private:
 };
 
 #endif
-
 

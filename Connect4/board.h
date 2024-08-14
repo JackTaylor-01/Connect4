@@ -7,7 +7,7 @@ enum class Token { Empty, Red, Yellow };
 
 class GameBoard {
 public:
-    GameBoard(int rows, int cols);
+    GameBoard(int rows, int cols, int winLength);
     bool placeToken(int col, Token token);
     bool checkWin(Token token);
     void displayBoard();
@@ -17,9 +17,11 @@ public:
 private:
     int rows;
     int cols;
+    int winLength;  // Number of tokens required to win
     std::vector<std::vector<Token>> grid;
     bool checkDirection(int row, int col, int dRow, int dCol, Token token);
 };
 
 #endif
+
 

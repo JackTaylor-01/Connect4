@@ -2,13 +2,30 @@
 //
 
 #include "game.h"
+#include <iostream>
 
 int main() {
-    ConnectFourGame game(6, 7);
+    int rows, cols, winLength;
+
+    std::cout << "Enter number of rows: ";
+    std::cin >> rows;
+    std::cout << "Enter number of columns: ";
+    std::cin >> cols;
+    std::cout << "Enter number of tokens in a row to win: ";
+    std::cin >> winLength;
+
+    // Validate inputs
+    if (rows <= 0 || cols <= 0 || winLength <= 0 || winLength > std::min(rows, cols)) {
+        std::cout << "Invalid input. Ensure rows and columns are positive and win length is feasible.\n";
+        return 1;
+    }
+
+    ConnectFourGame game(rows, cols, winLength);
     game.playGame();
 
     return 0;
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

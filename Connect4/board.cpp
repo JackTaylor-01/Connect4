@@ -1,7 +1,8 @@
 #include "board.h"
 #include <iostream>
 
-GameBoard::GameBoard(int rows, int cols) : rows(rows), cols(cols), grid(rows, std::vector<Token>(cols, Token::Empty)) {}
+GameBoard::GameBoard(int rows, int cols, int winLength)
+    : rows(rows), cols(cols), winLength(winLength), grid(rows, std::vector<Token>(cols, Token::Empty)) {}
 
 bool GameBoard::placeToken(int col, Token token) {
     if (col < 0 || col >= cols) return false;  // Check for valid column index
@@ -33,7 +34,7 @@ bool GameBoard::checkWin(Token token) {
 
 bool GameBoard::checkDirection(int row, int col, int dRow, int dCol, Token token) {
     int count = 0;
-    for (int i = 0; i < 4; ++i) {  // Check for four tokens in a row
+    for (int i = 0; i < winLength; ++i) {  // Check for 'winLength' tokens in a row
         int r = row + i * dRow;
         int c = col + i * dCol;
         if (r >= 0 && r < rows && c >= 0 && c < cols && grid[r][c] == token) {
@@ -43,7 +44,7 @@ bool GameBoard::checkDirection(int row, int col, int dRow, int dCol, Token token
             return false;
         }
     }
-    return count >= 4;  // Ensure there are at least 4 in a row
+    return count >= winLength;  // Ensure there are at least 'winLength' in a row
 }
 
 void GameBoard::displayBoard() {
@@ -59,3 +60,4 @@ void GameBoard::displayBoard() {
         std::cout << "\n";
     }
 }
+
