@@ -26,5 +26,7 @@ void GameBoard::displayBoard() {
                 std::cout << "Y ";
         }
         std::cout << "\n";
+
     }
+    std::cout << "\n";
 }

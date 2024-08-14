@@ -2,17 +2,20 @@
 //
 
 #include "board.h"
+#include "player.h"
 
 int main() {
     GameBoard board(6, 7);
+    Player player1("Player 1", Token::Red);
+    Player player2("Player 2", Token::Yellow);
+
     board.displayBoard();
 
-    board.placeToken(3, Token::Red);  // Place a Red token in column 3
+    board.placeToken(3, player1.getToken());  // Player 1 places a token
     board.displayBoard();
 
-    board.placeToken(3, Token::Yellow);  // Place a Yellow token in the same column
+    board.placeToken(3, player2.getToken());  // Player 2 places a token
     board.displayBoard();
-
 
     return 0;
 }
