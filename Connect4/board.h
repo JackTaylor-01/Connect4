@@ -11,6 +11,8 @@ public:
     bool placeToken(int col, Token token);
     bool checkWin(Token token);
     void displayBoard();
+    int getCols() const { return cols; }
+    int getRows() const { return rows; }
 
 private:
     int rows;

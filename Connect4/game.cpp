@@ -1,5 +1,6 @@
 #include "game.h"
 #include <iostream>
+#include <limits>
 
 ConnectFourGame::ConnectFourGame(int rows, int cols)
     : board(rows, cols), player1("Player 1", Token::Red), player2("Player 2", Token::Yellow) {
@@ -27,11 +28,15 @@ void ConnectFourGame::playGame() {
     while (true) {
         displayStatus();
         int col;
-        std::cout << "Enter column (0-" << 6 << "): ";
-        std::cin >> col;
+        std::cout << "Enter column (0-" << (board.getCols() - 1) << "): ";
+        while (!(std::cin >> col) || col < 0 || col >= board.getCols()) {
+            std::cin.clear();  // Clear the error flag
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Discard invalid input
+            std::cout << "Invalid input. Please enter a column number between 0 and " << (board.getCols() - 1) << ": ";
+        }
 
         if (!board.placeToken(col, currentPlayer->getToken())) {
-            std::cout << "Invalid move. Try again.\n";
+            std::cout << "Column full or invalid move. Try again.\n";
             continue;
         }
 
@@ -44,4 +49,5 @@ void ConnectFourGame::playGame() {
         switchPlayer();  // Switch turns after a valid move
     }
 }
+
 
