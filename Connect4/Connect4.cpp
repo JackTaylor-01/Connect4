@@ -1,21 +1,11 @@
 // Connect4.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "board.h"
-#include "player.h"
+#include "game.h"
 
 int main() {
-    GameBoard board(6, 7);
-    Player player1("Player 1", Token::Red);
-    Player player2("Player 2", Token::Yellow);
-
-    board.displayBoard();
-
-    board.placeToken(3, player1.getToken());  // Player 1 places a token
-    board.displayBoard();
-
-    board.placeToken(3, player2.getToken());  // Player 2 places a token
-    board.displayBoard();
+    ConnectFourGame game(6, 7);
+    game.playGame();
 
     return 0;
 }
