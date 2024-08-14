@@ -8,6 +8,7 @@ enum class Token { Empty, Red, Yellow };
 class GameBoard {
 public:
     GameBoard(int rows, int cols);
+    bool placeToken(int col, Token token);
     void displayBoard();
 
 private:

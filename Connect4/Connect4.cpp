@@ -4,8 +4,15 @@
 #include "board.h"
 
 int main() {
-    GameBoard board(6, 7);  // Standard Connect Four grid size
-    board.displayBoard();   // Display initial empty grid
+    GameBoard board(6, 7);
+    board.displayBoard();
+
+    board.placeToken(3, Token::Red);  // Place a Red token in column 3
+    board.displayBoard();
+
+    board.placeToken(3, Token::Yellow);  // Place a Yellow token in the same column
+    board.displayBoard();
+
 
     return 0;
 }
